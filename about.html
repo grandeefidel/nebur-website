@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Nebur Logistics</title>
+  <meta name="description" content="Learn the story behind Nebur, meet our founders, and discover the values driving Nigeria's modern logistics company.">
+
+  <meta property="og:title" content="About Us — Nebur Logistics">
+  <meta property="og:description" content="Learn the story behind Nebur, meet our founders, and discover the values driving Nigeria's modern logistics company.">
+  <meta property="og:image" content="https://neburlogistics.ng/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://neburlogistics.ng/about.html">
+  <meta property="og:type" content="website">
+
+  <link rel="canonical" href="https://neburlogistics.ng/about.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <style>
+    /* ── About Hero ── */
+    #about-hero {
+      background: var(--color-off-white);
+      background-image: radial-gradient(circle, rgba(0,0,0,0.055) 1px, transparent 1px);
+      background-size: 28px 28px;
+      padding: clamp(4.5rem, 10vw, 8rem) 0;
+      text-align: center;
+    }
+    .about-hero-inner { max-width: 680px; margin: 0 auto; }
+    .about-hero-inner h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--color-navy); margin-bottom: 1.25rem; }
+    .about-hero-inner h1 span { color: var(--color-amber); }
+    .about-hero-inner p { font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--color-text-muted); max-width: 520px; margin: 0 auto; }
+
+    /* ── Our Story ── */
+    #our-story { padding: var(--section-pad); background: var(--color-white); }
+    .story-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+    .story-text p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.0625rem; max-width: 65ch; }
+    .story-text p:last-child { margin-bottom: 0; }
+    .story-text strong { color: var(--color-text); }
+    .story-callout {
+      background: var(--color-navy);
+      border-radius: 20px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .story-callout::before {
+      content: '"';
+      position: absolute;
+      top: -1rem;
+      left: 1.5rem;
+      font-size: 8rem;
+      font-weight: 800;
+      color: var(--color-amber);
+      opacity: 0.2;
+      line-height: 1;
+    }
+    .story-callout blockquote { font-size: clamp(1.1rem, 2vw, 1.375rem); font-weight: 600; color: var(--color-white); line-height: 1.6; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+    .story-callout cite { font-size: 0.875rem; color: rgba(255,255,255,0.55); font-style: normal; }
+    .story-callout .callout-accent { display: block; width: 40px; height: 3px; background: var(--color-amber); border-radius: 2px; margin-bottom: 1.25rem; }
+
+    /* ── Timeline ── */
+    #timeline { padding: var(--section-pad); background: var(--color-off-white); }
+    .timeline { max-width: 680px; margin: 0 auto; position: relative; padding-left: 2.5rem; }
+    .timeline::before { content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: var(--color-border); }
+    .timeline-item { position: relative; padding-bottom: 2.5rem; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -2.5rem;
+      top: 4px;
+      width: 24px;
+      height: 24px;
+      background: var(--color-white);
+      border: 2px solid var(--color-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.3s;
+    }
+    .timeline-item.active .timeline-dot { background: var(--color-amber); border-color: var(--color-amber); }
+    .timeline-item.active .timeline-dot::after { content: ''; width: 8px; height: 8px; background: var(--color-navy); border-radius: 50%; }
+    .timeline-year { font-size: 0.8125rem; font-weight: 700; color: var(--color-amber); letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+    .timeline-item h3 { font-size: 1.0625rem; margin-bottom: 0.5rem; }
+    .timeline-item p { color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.6; max-width: 50ch; }
+
+    /* ── Founders ── */
+    #founders { padding: var(--section-pad); background: var(--color-white); }
+    .founders-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 860px; }
+    .founder-card {
+      background: var(--color-off-white);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .founder-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+    .founder-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-white);
+      margin-bottom: 1.25rem;
+    }
+    .founder-card h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+    .founder-role { font-size: 0.875rem; font-weight: 600; color: var(--color-amber); margin-bottom: 1rem; }
+    .founder-bio { color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.7; margin-bottom: 1.25rem; }
+    .founder-linkedin {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      font-size: 0.875rem; font-weight: 600; color: var(--color-navy);
+      border: 1.5px solid var(--color-border); border-radius: 8px;
+      padding: 0.5rem 1rem; min-height: 40px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .founder-linkedin:hover { border-color: var(--color-navy); background: var(--color-off-white); }
+
+    /* ── Values ── */
+    #values { padding: var(--section-pad); background: var(--color-off-white); }
+    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .value-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .value-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--color-navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+    .value-card h3 { font-size: 1.0625rem; margin-bottom: 0.625rem; }
+    .value-card p { color: var(--color-text-muted); font-size: 0.9375rem; line-height: 1.6; }
+
+    /* ── CTA Banner ── */
+    #cta-banner { padding: clamp(4rem, 8vw, 7rem) 0; background: var(--color-amber); background-image: radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px); background-size: 24px 24px; text-align: center; }
+    #cta-banner h2 { color: var(--color-navy); font-size: clamp(1.75rem, 4vw, 2.75rem); margin-bottom: 1rem; }
+    #cta-banner p { color: rgba(11,31,58,0.7); font-size: 1.125rem; max-width: 480px; margin: 0 auto 2.5rem; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .story-inner { grid-template-columns: 1fr; }
+      .founders-grid { grid-template-columns: 1fr; max-width: 100%; }
+    }
+    @media (max-width: 640px) {
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 400px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <nav class="nav-inner" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="nav-logo" aria-label="Nebur Logistics — Home">
+          <div class="nav-logo-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6l7-4 7 4v8l-7 4-7-4V6z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 2v16M3 6l7 4 7-4" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          Nebur
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html" class="active" aria-current="page">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#" data-future="b2b-portal" style="opacity:0.45;" aria-disabled="true">Businesses</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="book.html" class="btn btn-primary" style="padding:0.625rem 1.25rem;font-size:0.9375rem;">Book a Pickup</a>
+          <a href="#" data-future="tracking" class="btn-track" aria-label="Track your parcel">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><circle cx="7.5" cy="7.5" r="2.5" fill="currentColor"/><path d="M7.5 1v2M7.5 12v2M1 7.5h2M12 7.5h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Track Parcel
+          </a>
+        </div>
+        <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="book.html" class="btn-track">Book a Pickup</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ABOUT HERO -->
+    <section id="about-hero" aria-labelledby="about-hero-heading">
+      <div class="container">
+        <div class="about-hero-inner">
+          <p class="section-label">Our Story</p>
+          <h1 id="about-hero-heading">We're <span>Redefining</span><br>Logistics in Nigeria</h1>
+          <p>We started Nebur because we kept experiencing — and hearing about — the same frustration: parcels lost, riders who don't show up, no updates, no accountability. We knew Nigeria deserved better.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR STORY -->
+    <section id="our-story" aria-labelledby="story-heading">
+      <div class="container">
+        <div class="story-inner">
+          <div class="story-text fade-up">
+            <p class="section-label">How It Started</p>
+            <h2 id="story-heading">Built out of frustration. Driven by purpose.</h2>
+            <br>
+            <p>Nebur was born in 2023 from a simple, shared frustration. Our founders — both e-commerce sellers and frequent parcel senders — found themselves constantly battling unreliable couriers, lost packages, and zero customer service. Every time a delivery went wrong, the answer was a shrug.</p>
+            <p>So they decided to fix it themselves. Starting with a small team of riders in Lagos and a very simple promise — <strong>show up on time, communicate clearly, and make it right if something goes wrong</strong> — Nebur made its first 100 deliveries in January 2023.</p>
+            <p>Word spread fast. Sellers on Instagram and Jiji started switching. Small businesses in Lekki and Victoria Island signed up. By the end of 2023, Nebur had completed over 10,000 deliveries and opened its first dedicated operations hub in Lagos Island. The Abuja hub followed in mid-2024, and our express same-day service launched in early 2025.</p>
+            <p>Today, Nebur is building the logistics infrastructure Nigeria's digital economy has always needed — reliable, transparent, and built to scale across the entire continent.</p>
+          </div>
+          <div class="story-callout fade-up fade-up-delay-2">
+            <span class="callout-accent"></span>
+            <blockquote>"Nigeria's digital economy is growing faster than its logistics infrastructure. We built Nebur to close that gap — one delivered parcel at a time."</blockquote>
+            <cite>— Ruben Adeleke, Co-founder &amp; CEO</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" aria-labelledby="timeline-heading">
+      <div class="container">
+        <div class="section-header section-header-center">
+          <p class="section-label">Our Journey</p>
+          <h2 id="timeline-heading">From idea to nationwide operations</h2>
+          <p>Every milestone was hard-won. Here's how Nebur grew from a Lagos experiment into a national logistics brand.</p>
+        </div>
+
+        <div class="timeline" role="list">
+
+          <div class="timeline-item fade-up" role="listitem">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2023</div>
+            <h3>Company Founded</h3>
+            <p>Ruben Adeleke and Bisi Okonkwo launch Nebur from a Lagos apartment with six riders, one van, and a very big idea about what Nigerian logistics could be.</p>
+          </div>
+
+          <div class="timeline-item fade-up" role="listitem">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2023 — Q4</div>
+            <h3>First 10,000 Deliveries &amp; Lagos Hub Opens</h3>
+            <p>Nebur hits 10,000 successful deliveries and opens its first physical operations hub on Lagos Island, serving the entire Lagos metropolitan area.</p>
+          </div>
+
+          <div class="timeline-item fade-up" role="listitem">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2024 — Mid</div>
+            <h3>Abuja Hub Launched</h3>
+            <p>Expansion north — the FCT hub opens, enabling standard and express deliveries across Abuja, Gwagwalada, and surrounding areas. B2B contracts start flowing.</p>
+          </div>
+
+          <div class="timeline-item active fade-up" role="listitem">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2025</div>
+            <h3>Express Same-Day Service &amp; E-commerce Fulfilment</h3>
+            <p>Nebur launches same-day delivery in all three major hubs and introduces full e-commerce warehousing and fulfilment services for online sellers. 50,000+ deliveries completed.</p>
+          </div>
+
+          <div class="timeline-item fade-up" role="listitem">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2026 — Planned</div>
+            <h3>Pan-African Expansion</h3>
+            <p>Planning underway to extend Nebur's network to Ghana, Kenya, and South Africa — bringing the same standard of reliable last-mile logistics to more African markets.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUNDERS -->
+    <section id="founders" aria-labelledby="founders-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">The Team</p>
+          <h2 id="founders-heading">Meet the founders</h2>
+          <p>Two Nigerians who got tired of broken logistics and decided to do something about it.</p>
+        </div>
+
+        <div class="founders-grid">
+
+          <div class="founder-card fade-up">
+            <div class="founder-avatar" style="background:#0B1F3A;">RA</div>
+            <h3>Ruben Adeleke</h3>
+            <p class="founder-role">Co-founder &amp; CEO</p>
+            <p class="founder-bio">Ruben spent five years running an e-commerce store selling consumer electronics across Nigeria before founding Nebur. He experienced every kind of logistics failure firsthand — which made him the perfect person to fix them. He leads strategy, operations, and partnerships at Nebur.</p>
+            <a href="#" class="founder-linkedin" aria-label="Connect with Ruben Adeleke on LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M7 10v7M7 7v.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 17v-4c0-1.7 1.3-3 3-3s3 1.3 3 3v4M11 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              LinkedIn
+            </a>
+          </div>
+
+          <div class="founder-card fade-up fade-up-delay-2">
+            <div class="founder-avatar" style="background:#7C3AED;">BO</div>
+            <h3>Bisi Okonkwo</h3>
+            <p class="founder-role">Co-founder &amp; COO</p>
+            <p class="founder-bio">Bisi has a background in supply chain management and spent three years at a multinational freight company before the entrepreneurship bug bit. She designed Nebur's operations from the ground up — the routing system, rider training, and COD settlement process all come from her brain. She oversees all day-to-day operations.</p>
+            <a href="#" class="founder-linkedin" aria-label="Connect with Bisi Okonkwo on LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M7 10v7M7 7v.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 17v-4c0-1.7 1.3-3 3-3s3 1.3 3 3v4M11 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              LinkedIn
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section id="values" aria-labelledby="values-heading">
+      <div class="container">
+        <div class="section-header section-header-center">
+          <p class="section-label">What We Stand For</p>
+          <h2 id="values-heading">Our core values</h2>
+          <p>These aren't words on a wall. They're the standards we hold every rider, every operation, and every customer interaction to.</p>
+        </div>
+
+        <div class="values-grid">
+
+          <div class="value-card fade-up">
+            <div class="value-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M14 3L3 8v6c0 6.5 4.6 12.5 11 14 6.4-1.5 11-7.5 11-14V8L14 3z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M9 14l3.5 3.5 6-6" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Reliability</h3>
+            <p>We do what we say we'll do. Every time. If something goes wrong, we own it and fix it — no excuses.</p>
+          </div>
+
+          <div class="value-card fade-up fade-up-delay-1">
+            <div class="value-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="11" stroke="#F59E0B" stroke-width="1.5"/>
+                <path d="M14 8v6l4 4" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Speed</h3>
+            <p>Every hour a parcel is in transit is a cost to someone. We optimise relentlessly to get things there faster.</p>
+          </div>
+
+          <div class="value-card fade-up fade-up-delay-2">
+            <div class="value-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M14 3l-11 5v6c0 6 5 11 11 13 6-2 11-7 11-13V8L14 3z" stroke="#F59E0B" stroke-width="1.5"/>
+                <circle cx="14" cy="14" r="4" stroke="#F59E0B" stroke-width="1.5"/>
+                <path d="M14 10v2l2 2" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Transparency</h3>
+            <p>No hidden fees. No vague tracking updates. We tell you exactly what's happening, at every step of the journey.</p>
+          </div>
+
+          <div class="value-card fade-up fade-up-delay-3">
+            <div class="value-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M14 3C8 3 3 8 3 14s5 11 11 11 11-5 11-11S20 3 14 3z" stroke="#F59E0B" stroke-width="1.5"/>
+                <path d="M9 14c1-2 3-4 5-4s4 2 5 4" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M10 10h.01M18 10h.01" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Community</h3>
+            <p>We exist to help Nigerian businesses grow. When a seller makes more sales because of Nebur, that's our definition of winning.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section id="cta-banner" aria-labelledby="cta-heading">
+      <div class="container">
+        <h2 id="cta-heading">Ship with a team that cares</h2>
+        <p>Every parcel we deliver represents someone's livelihood, someone's gift, someone's business. We never forget that.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn-navy">
+            Get a Quote
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="services.html" class="btn-outline-navy">See Our Services</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" aria-label="Nebur Logistics — Home">
+            <div class="nav-logo-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6l7-4 7 4v8l-7 4-7-4V6z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 2v16M3 6l7 4 7-4" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+            Nebur
+          </a>
+          <p>Fast. Reliable. Delivered.<br>Nigeria's modern parcel logistics company.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg></a>
+            <a href="#" class="social-link" aria-label="X (Twitter)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></a>
+            <a href="https://wa.me/234xxxxxxxxxx" class="social-link" aria-label="WhatsApp"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4C8.6 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2z" stroke="white" stroke-width="1.5"/></svg></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4" stroke="white" stroke-width="1.5"/><path d="M7 10v7M7 7v.01" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M11 17v-4c0-1.7 1.3-3 3-3s3 1.3 3 3v4M11 10v7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" data-future="tracking">Track Parcel</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul role="list">
+            <li><a href="mailto:hello@neburlogistics.ng">hello@neburlogistics.ng</a></li>
+            <li><a href="tel:+234xxxxxxxxxx">+234 xxx xxx xxxx</a></li>
+            <li><span>Lagos, Nigeria</span></li>
+            <li><span>Abuja Hub, FCT</span></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get The App</h4>
+          <div class="footer-app">
+            <a href="#" class="app-badge" aria-label="App Store — Coming Soon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.5 2.5c0 1.5-1 2.7-2.5 2.7S9.5 4 9.5 2.5 10.5 0 12 0s2.5 1 2.5 2.5z" fill="rgba(255,255,255,0.5)"/><path d="M21 17.5c-.5 1-1 2-1.5 2.5s-1 1-2 1-1.5-.5-3-.5-2 .5-3 .5-1.5-.5-2-1-1-1.5-1.5-2.5C7 15.5 6 13 6 10.5 6 7 8 5 10 5c1 0 2 .5 2.5.5S14 5 15.5 5c2 0 4 2 4 5.5 0 2.5-1 5-2.5 7z" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg><div><span class="app-badge-label">Download on the</span><span class="app-badge-store">App Store</span></div><span class="app-badge-soon">Soon</span></a>
+            <a href="#" class="app-badge" aria-label="Google Play — Coming Soon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 2.5L15.5 12 3 21.5V2.5zM3 2.5l18.5 9.5-7 3.8M3 21.5l11-6.2 7.5 3.7" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linejoin="round"/></svg><div><span class="app-badge-label">Get it on</span><span class="app-badge-store">Google Play</span></div><span class="app-badge-soon">Soon</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Nebur Logistics. All rights reserved.</span>
+        <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta-bar" role="complementary" aria-label="Quick action">
+    <a href="contact.html">Get a Free Quote <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+
+  <script defer>
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileNav  = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!expanded));
+      mobileNav.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!header.contains(e.target) && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  </script>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/234xxxxxxxxxx" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Nebur on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+      <path d="M13 2C7 2 2 7 2 13c0 2 .6 3.9 1.6 5.5L2 24l5.7-1.5C9.2 23.5 11 24 13 24c6 0 11-5 11-11S19 2 13 2z" fill="white"/>
+      <path d="M9.5 8c-.3 0-.8.1-1.2.6-.4.5-1.5 1.5-1.5 3.6s1.5 4.2 1.7 4.5c.2.3 3 4.5 7.1 6.3 1 .4 1.7.6 2.3.8.9.3 1.8.2 2.4-.1.7-.4 2.2-1 2.5-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5s-2.2-1.1-2.5-1.2c-.3-.1-.6-.2-.8.2s-.9 1.2-1.1 1.4c-.2.2-.4.3-.8.1s-1.5-.5-2.9-1.8c-1.1-1-1.8-2.2-2-2.6-.2-.4 0-.6.2-.8l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4-.1-.6s-.8-1.9-1.1-2.6c-.3-.7-.6-.6-.8-.6z" fill="#25D366"/>
+    </svg>
+    <span class="whatsapp-float-label">Chat on WhatsApp</span>
+  </a>
+
+</body>
+</html>

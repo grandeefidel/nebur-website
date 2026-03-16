@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services — Nebur Logistics</title>
+  <meta name="description" content="Last-mile delivery, express shipping, B2B freight, and e-commerce fulfilment across Nigeria. See how Nebur can serve you.">
+
+  <meta property="og:title" content="Our Services — Nebur Logistics">
+  <meta property="og:description" content="Last-mile delivery, express shipping, B2B freight, and e-commerce fulfilment across Nigeria.">
+  <meta property="og:image" content="https://neburlogistics.ng/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://neburlogistics.ng/services.html">
+  <meta property="og:type" content="website">
+
+  <link rel="canonical" href="https://neburlogistics.ng/services.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <style>
+    /* ── Services Hero ── */
+    #services-hero {
+      background: var(--color-navy);
+      background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 28px 28px;
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      text-align: center;
+    }
+    .services-hero-inner { max-width: 640px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px; padding: 0.375rem 1rem;
+      font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.7);
+      margin-bottom: 1.75rem;
+    }
+    #services-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.1; color: var(--color-white); margin-bottom: 1.25rem;
+    }
+    #services-hero h1 span { color: var(--color-amber); }
+    #services-hero p { font-size: clamp(1rem, 1.8vw, 1.2rem); color: rgba(255,255,255,0.65); max-width: 500px; margin: 0 auto; }
+
+    /* ── Services List ── */
+    #services-list { padding: var(--section-pad); background: var(--color-white); }
+    .service-row {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 2rem; padding: 2.5rem 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .service-row:first-child { padding-top: 0; }
+    .service-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .service-row-icon {
+      width: 68px; height: 68px; background: var(--color-navy); border-radius: 16px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .service-row-body h3 { font-size: 1.3125rem; margin-bottom: 0.625rem; }
+    .service-row-body > p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1.25rem; max-width: 65ch; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      background: var(--color-off-white); border: 1px solid var(--color-border);
+      border-radius: 100px; padding: 0.3rem 0.875rem;
+      font-size: 0.8125rem; font-weight: 500; color: var(--color-text-muted);
+    }
+    .tag.highlight { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.35); color: var(--color-navy); }
+
+    /* ── Drop-off Points ── */
+    #drop-off-points {
+      padding: var(--section-pad);
+      background: var(--color-off-white);
+    }
+    .dropoff-intro {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      flex-wrap: wrap;
+    }
+    .dropoff-intro-text h2 { margin-bottom: 0.75rem; }
+    .dropoff-intro-text p { color: var(--color-text-muted); font-size: 1.0625rem; max-width: 520px; }
+    .city-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.75rem;
+    }
+    .city-tab {
+      padding: 0.5rem 1.125rem;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1.5px solid var(--color-border);
+      background: var(--color-white);
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .city-tab:hover { border-color: var(--color-navy); color: var(--color-navy); }
+    .city-tab.active { background: var(--color-navy); border-color: var(--color-navy); color: var(--color-white); }
+    .dropoff-city-group { display: none; }
+    .dropoff-city-group.active { display: block; }
+    .dropoff-city-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+    }
+    .dropoff-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .dropoff-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .dropoff-card:hover { border-color: var(--color-amber); box-shadow: var(--shadow); }
+    .dropoff-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .dropoff-card h3 { font-size: 1rem; font-weight: 700; color: var(--color-navy); }
+    .dropoff-status {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 0.25rem 0.625rem;
+      border-radius: 100px;
+      background: rgba(34,197,94,0.1);
+      color: #16a34a;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .dropoff-address {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      margin-bottom: 0.875rem;
+    }
+    .dropoff-hours {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+    }
+    .dropoff-card-actions { display: flex; gap: 0.625rem; }
+    .dropoff-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-navy);
+      padding: 0.4rem 0.75rem;
+      border: 1.5px solid var(--color-border);
+      border-radius: 6px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .dropoff-action:hover { border-color: var(--color-navy); background: var(--color-off-white); }
+    .dropoff-action.primary {
+      background: var(--color-amber);
+      border-color: var(--color-amber);
+      color: var(--color-navy);
+    }
+    .dropoff-action.primary:hover { background: var(--color-amber-dark); border-color: var(--color-amber-dark); }
+    .dropoff-cta-row {
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .dropoff-cta-row p { font-size: 0.9375rem; color: var(--color-text-muted); }
+    .dropoff-cta-row strong { display: block; font-size: 1rem; color: var(--color-navy); margin-bottom: 0.25rem; }
+
+    /* ── Pricing Note ── */
+    #pricing-note {
+      padding: clamp(3rem, 6vw, 5rem) 0;
+      background: var(--color-off-white);
+      background-image: radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .pricing-inner {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 2rem; align-items: center;
+      background: var(--color-white); border: 1px solid var(--color-border);
+      border-radius: 20px; padding: clamp(2rem, 4vw, 3rem);
+      box-shadow: var(--shadow);
+    }
+    .pricing-text h2 { margin-bottom: 0.75rem; }
+    .pricing-text p { color: var(--color-text-muted); font-size: 1.0625rem; max-width: 480px; }
+    .pricing-cta { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end; }
+
+    /* ── FAQ ── */
+    #services-faq { padding: var(--section-pad); background: var(--color-white); }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
+    .faq-item {
+      border: 1px solid var(--color-border); border-radius: var(--radius);
+      overflow: hidden; transition: border-color 0.2s;
+    }
+    .faq-item.open { border-color: var(--color-amber); }
+    .faq-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: 1.25rem 1.5rem;
+      font-size: 1rem; font-weight: 600; color: var(--color-text);
+      text-align: left; background: var(--color-white); transition: background 0.2s;
+    }
+    .faq-btn:hover { background: var(--color-off-white); }
+    .faq-chevron {
+      width: 28px; height: 28px; border-radius: 50%; background: var(--color-off-white);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: transform 0.3s, background 0.2s;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); background: var(--color-amber); }
+    .faq-item.open .faq-chevron svg path { stroke: var(--color-navy); }
+    .faq-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.2s;
+      padding: 0 1.5rem;
+    }
+    .faq-body.open { max-height: 400px; padding: 0 1.5rem 1.25rem; }
+    .faq-body p { color: var(--color-text-muted); line-height: 1.7; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .dropoff-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .service-row { grid-template-columns: 1fr; gap: 1.25rem; }
+      .service-row-icon { width: 56px; height: 56px; }
+      .pricing-inner { grid-template-columns: 1fr; }
+      .pricing-cta { align-items: flex-start; }
+      .dropoff-intro { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 640px) {
+      .dropoff-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <nav class="nav-inner" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="nav-logo" aria-label="Nebur Logistics — Home">
+          <div class="nav-logo-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M3 6l7-4 7 4v8l-7 4-7-4V6z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M10 2v16M3 6l7 4 7-4" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          Nebur
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="services.html" class="active" aria-current="page">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#" data-future="b2b-portal" style="opacity:0.45;" aria-disabled="true">Businesses</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="book.html" class="btn btn-primary" style="padding:0.625rem 1.25rem;font-size:0.9375rem;">Book a Pickup</a>
+          <a href="#" data-future="tracking" class="btn-track" aria-label="Track your parcel">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><circle cx="7.5" cy="7.5" r="2.5" fill="currentColor"/><path d="M7.5 1v2M7.5 12v2M1 7.5h2M12 7.5h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Track Parcel
+          </a>
+        </div>
+        <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="services.html" aria-current="page">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="book.html" class="btn-track">Book a Pickup</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- SERVICES HERO -->
+    <section id="services-hero" aria-labelledby="services-hero-heading">
+      <div class="container">
+        <div class="services-hero-inner">
+          <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1l1.8 4H13l-3.5 2.6 1.4 4.3L7 9.3l-3.9 2.6 1.4-4.3L1 5h4.2z" fill="#F59E0B"/></svg>
+            6 delivery services available
+          </div>
+          <h1 id="services-hero-heading">What We <span>Deliver</span></h1>
+          <p>From a single parcel to bulk B2B freight — Nebur has a service built for every shipping need across Nigeria.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES LIST -->
+    <section id="services-list" aria-labelledby="services-list-heading">
+      <div class="container">
+        <h2 id="services-list-heading" class="visually-hidden">All Nebur Services</h2>
+
+        <!-- Last-Mile Delivery -->
+        <div class="service-row fade-up">
+          <div class="service-row-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M4 11l12-7 12 7v10l-12 7L4 21V11z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M16 4v18M4 11l12 7 12-7" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="service-row-body">
+            <h3>Last-Mile Delivery</h3>
+            <p>Our flagship service. We collect parcels from your door and deliver them to any address across all 36 Nigerian states and the FCT. Whether it's a gift going to Kano, a product ordered from Aba, or a document needed urgently in Ibadan — Nebur's network of riders and regional partners makes it happen. Standard delivery windows range from next-day to 3 days depending on destination.</p>
+            <div class="service-tags">
+              <span class="tag highlight">All 36 States + FCT</span>
+              <span class="tag">Next-day available</span>
+              <span class="tag">Door-to-door</span>
+              <span class="tag">Parcel tracking included</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Parcel Pickup & Drop-off -->
+        <div class="service-row fade-up">
+          <div class="service-row-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="4" y="10" width="24" height="18" rx="3" stroke="#F59E0B" stroke-width="1.5"/>
+              <path d="M4 16h24" stroke="#F59E0B" stroke-width="1.5"/>
+              <path d="M11 6l3 4M21 6l-3 4" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M10 22h5M20 22h2" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="service-row-body">
+            <h3>Parcel Pickup &amp; Drop-off</h3>
+            <p>Prefer to drop off your parcel rather than wait for a collection? Use one of our growing network of drop-off points across Lagos, Abuja, and Port Harcourt. You can also schedule a specific collection window — morning, afternoon, or evening — so pickups fit around your day, not the other way around.</p>
+            <div class="service-tags">
+              <span class="tag highlight">Flexible scheduling</span>
+              <span class="tag">Drop-off points available</span>
+              <span class="tag">Lagos · Abuja · PH</span>
+              <span class="tag">Home or business</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Express Delivery -->
+        <div class="service-row fade-up">
+          <div class="service-row-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M28 16l-11 6.5L4 9 15 2.5 28 9v7z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M4 9v13.5l13 7.5" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M28 16v7.5l-11 6.5" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M31 8l-5-2.5" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M31 12h-5" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="service-row-body">
+            <h3>Express Delivery — Same-Day</h3>
+            <p>Book before 12 noon and your parcel is delivered the same evening within Lagos, Abuja, or Port Harcourt. This service is designed for urgent documents, last-minute gifts, business materials, and anything that simply cannot wait until tomorrow. Our dedicated express riders prioritise your delivery above all else.</p>
+            <div class="service-tags">
+              <span class="tag highlight">Same-day delivery</span>
+              <span class="tag highlight">Book before noon</span>
+              <span class="tag">Lagos · Abuja · PH only</span>
+              <span class="tag">Priority handling</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- B2B -->
+        <div class="service-row fade-up">
+          <div class="service-row-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="3" y="14" width="26" height="14" rx="3" stroke="#F59E0B" stroke-width="1.5"/>
+              <path d="M3 20h26" stroke="#F59E0B" stroke-width="1.5"/>
+              <path d="M10 14V8a6 6 0 0112 0v6" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="24" r="2" fill="#F59E0B"/>
+              <circle cx="22" cy="24" r="2" fill="#F59E0B"/>
+            </svg>
+          </div>
+          <div class="service-row-body">
+            <h3>Business Logistics (B2B)</h3>
+            <p>Scale your business operations with Nebur's dedicated B2B freight solutions. Whether you need to move inventory between cities, supply retail partners, or coordinate regular bulk shipments, we offer custom-priced contracts, dedicated account managers, and flexible scheduling. Built for SMEs, manufacturers, distributors, and growing brands.</p>
+            <div class="service-tags">
+              <span class="tag highlight">Bulk shipments</span>
+              <span class="tag">Custom pricing</span>
+              <span class="tag">Dedicated account manager</span>
+              <span class="tag">Regular schedule available</span>
+              <span class="tag">Nationwide</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- E-commerce Fulfilment -->
+        <div class="service-row fade-up">
+          <div class="service-row-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M4 8l12-5 12 5v7l-12 7L4 15V8z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M4 15l12 7 12-7M16 3v18" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M10 5.5l6 3 6-3" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M4 22v4M28 22v4M16 25v4" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="service-row-body">
+            <h3>E-commerce Fulfilment</h3>
+            <p>Focus on selling — we handle everything after the order. Store your inventory in our Lagos or Abuja warehouses, and when orders come in from your Shopify, WooCommerce, or social media store, we pick, pack, and dispatch them automatically. Same-day dispatch for orders received before 2pm. Perfect for Instagram sellers, Jumia merchants, and independent online stores ready to scale.</p>
+            <div class="service-tags">
+              <span class="tag highlight">Warehousing included</span>
+              <span class="tag highlight">Same-day dispatch</span>
+              <span class="tag">Shopify · WooCommerce · Social</span>
+              <span class="tag">Inventory management</span>
+              <span class="tag">Returns handling</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cash-on-Delivery -->
+        <div class="service-row fade-up">
+          <div class="service-row-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="3" y="9" width="26" height="16" rx="4" stroke="#F59E0B" stroke-width="1.5"/>
+              <circle cx="16" cy="17" r="4.5" stroke="#F59E0B" stroke-width="1.5"/>
+              <path d="M16 14.5v2.5l2 1.5" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M3 13h4M25 13h4M3 21h4M25 21h4" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="service-row-body">
+            <h3>Cash-on-Delivery (COD)</h3>
+            <p>Nigeria's most trusted way to buy and sell online. Nebur's COD service lets your customers pay cash at the point of delivery — our rider collects it, we verify it, and we transfer it directly to your account the next morning. No more chasing payments, no payment gateway fees. COD removes the biggest barrier to online sales in Nigeria: trust.</p>
+            <div class="service-tags">
+              <span class="tag highlight">Next-morning settlement</span>
+              <span class="tag highlight">No gateway fees</span>
+              <span class="tag">Verified cash collection</span>
+              <span class="tag">Bank transfer to seller</span>
+              <span class="tag">All states</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DROP-OFF POINTS -->
+    <section id="drop-off-points" aria-labelledby="dropoff-heading">
+      <div class="container">
+
+        <div class="dropoff-intro">
+          <div class="dropoff-intro-text">
+            <p class="section-label">Drop-off Points</p>
+            <h2 id="dropoff-heading">Drop off near you</h2>
+            <p>Skip the wait — bring your parcel to one of our drop-off points across Lagos, Abuja, Port Harcourt, Kano, and Ibadan. Staff on-site to assist, label, and dispatch your parcel.</p>
+          </div>
+          <a href="book.html" class="btn btn-primary fade-up">
+            Book a Pickup Instead
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M3 7.5h9M8 4l3.5 3.5L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <!-- City tabs -->
+        <div class="city-tabs" role="tablist" aria-label="Filter drop-off points by city">
+          <button class="city-tab active" role="tab" aria-selected="true" aria-controls="city-lagos" id="tab-lagos">Lagos</button>
+          <button class="city-tab" role="tab" aria-selected="false" aria-controls="city-abuja" id="tab-abuja">Abuja</button>
+          <button class="city-tab" role="tab" aria-selected="false" aria-controls="city-ph" id="tab-ph">Port Harcourt</button>
+          <button class="city-tab" role="tab" aria-selected="false" aria-controls="city-kano" id="tab-kano">Kano</button>
+          <button class="city-tab" role="tab" aria-selected="false" aria-controls="city-ibadan" id="tab-ibadan">Ibadan</button>
+        </div>
+
+        <!-- Lagos -->
+        <div class="dropoff-city-group active" id="city-lagos" role="tabpanel" aria-labelledby="tab-lagos">
+          <p class="dropoff-city-label">Lagos — 4 locations</p>
+          <div class="dropoff-grid">
+
+            <div class="dropoff-card fade-up">
+              <div class="dropoff-card-top">
+                <h3>Ikeja Hub</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">12 Obafemi Awolowo Way, Ikeja, Lagos</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–7pm · Sun 10am–4pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Obafemi+Awolowo+Way+Ikeja+Lagos" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+            <div class="dropoff-card fade-up fade-up-delay-1">
+              <div class="dropoff-card-top">
+                <h3>Victoria Island</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">Plot 5 Adeola Hopewell Street, Victoria Island, Lagos</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–7pm · Sun 10am–4pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Adeola+Hopewell+Victoria+Island+Lagos" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+            <div class="dropoff-card fade-up fade-up-delay-2">
+              <div class="dropoff-card-top">
+                <h3>Surulere</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">22 Bode Thomas Street, Surulere, Lagos</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–7pm · Sun 10am–4pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Bode+Thomas+Street+Surulere+Lagos" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+            <div class="dropoff-card fade-up fade-up-delay-3">
+              <div class="dropoff-card-top">
+                <h3>Lekki Phase 1</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">14 Admiralty Way, Lekki Phase 1, Lagos</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–7pm · Sun 10am–4pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Admiralty+Way+Lekki+Lagos" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Abuja -->
+        <div class="dropoff-city-group" id="city-abuja" role="tabpanel" aria-labelledby="tab-abuja">
+          <p class="dropoff-city-label">Abuja — 3 locations</p>
+          <div class="dropoff-grid">
+
+            <div class="dropoff-card fade-up">
+              <div class="dropoff-card-top">
+                <h3>Wuse 2</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">Plot 452 Aminu Kano Crescent, Wuse 2, Abuja</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–7pm · Sun 10am–4pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Aminu+Kano+Crescent+Wuse+2+Abuja" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+            <div class="dropoff-card fade-up fade-up-delay-1">
+              <div class="dropoff-card-top">
+                <h3>Garki</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">8 Ralph Shodeinde Street, Garki, Abuja</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–7pm · Sun 10am–4pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Ralph+Shodeinde+Street+Garki+Abuja" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+            <div class="dropoff-card fade-up fade-up-delay-2">
+              <div class="dropoff-card-top">
+                <h3>Maitama</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">25 Danube Street, Maitama, Abuja</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–7pm · Sun 10am–4pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Danube+Street+Maitama+Abuja" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Port Harcourt -->
+        <div class="dropoff-city-group" id="city-ph" role="tabpanel" aria-labelledby="tab-ph">
+          <p class="dropoff-city-label">Port Harcourt — 2 locations</p>
+          <div class="dropoff-grid">
+
+            <div class="dropoff-card fade-up">
+              <div class="dropoff-card-top">
+                <h3>GRA Phase 2</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">34 Peter Odili Road, GRA Phase 2, Port Harcourt</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–7pm · Sun 10am–3pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Peter+Odili+Road+GRA+Port+Harcourt" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+            <div class="dropoff-card fade-up fade-up-delay-1">
+              <div class="dropoff-card-top">
+                <h3>Rumuola</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">18 Rumuola Road, Rumuola, Port Harcourt</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–7pm · Sun 10am–3pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Rumuola+Road+Port+Harcourt" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Kano -->
+        <div class="dropoff-city-group" id="city-kano" role="tabpanel" aria-labelledby="tab-kano">
+          <p class="dropoff-city-label">Kano — 2 locations</p>
+          <div class="dropoff-grid">
+
+            <div class="dropoff-card fade-up">
+              <div class="dropoff-card-top">
+                <h3>Sabon Gari</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">6 Lagos Street, Sabon Gari, Kano</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–6pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Lagos+Street+Sabon+Gari+Kano" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+            <div class="dropoff-card fade-up fade-up-delay-1">
+              <div class="dropoff-card-top">
+                <h3>Bompai</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">Bompai Industrial Area, Nassarawa, Kano</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–6pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Bompai+Industrial+Area+Kano" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Ibadan -->
+        <div class="dropoff-city-group" id="city-ibadan" role="tabpanel" aria-labelledby="tab-ibadan">
+          <p class="dropoff-city-label">Ibadan — 2 locations</p>
+          <div class="dropoff-grid">
+
+            <div class="dropoff-card fade-up">
+              <div class="dropoff-card-top">
+                <h3>Ring Road</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">3 Ring Road, Challenge, Ibadan</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–6pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Ring+Road+Challenge+Ibadan" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+            <div class="dropoff-card fade-up fade-up-delay-1">
+              <div class="dropoff-card-top">
+                <h3>UI / Bodija</h3>
+                <span class="dropoff-status">Open Now</span>
+              </div>
+              <p class="dropoff-address">11 Bodija Market Road, Bodija, Ibadan</p>
+              <p class="dropoff-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat 8am–6pm
+              </p>
+              <div class="dropoff-card-actions">
+                <a href="https://maps.google.com/?q=Bodija+Market+Road+Ibadan" target="_blank" rel="noopener noreferrer" class="dropoff-action">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1C3.6 1 2 2.6 2 4.5c0 2.6 3.5 5.5 3.5 5.5S9 7.1 9 4.5C9 2.6 7.4 1 5.5 1z" stroke="currentColor" stroke-width="1.1"/><circle cx="5.5" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1.1"/></svg>
+                  Directions
+                </a>
+                <a href="book.html" class="dropoff-action primary">Drop off here</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Bottom CTA row -->
+        <div class="dropoff-cta-row fade-up">
+          <div>
+            <strong>Don't see your area?</strong>
+            <p>More drop-off points are opening every month. Book a pickup and we'll come to you.</p>
+          </div>
+          <a href="book.html" class="btn btn-primary">
+            Book a Pickup
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M3 7.5h9M8 4l3.5 3.5L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PRICING NOTE -->
+    <section id="pricing-note" aria-labelledby="pricing-heading">
+      <div class="container">
+        <div class="pricing-inner fade-up">
+          <div class="pricing-text">
+            <p class="section-label">Pricing</p>
+            <h2 id="pricing-heading">Get a custom quote for your needs</h2>
+            <p>Pricing varies by parcel weight, distance, and service type. We don't do hidden surcharges — what we quote is what you pay. B2B and high-volume clients can negotiate monthly retainer rates with their dedicated account manager.</p>
+          </div>
+          <div class="pricing-cta">
+            <a href="contact.html" class="btn btn-primary">
+              Get a Quote
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M3 7.5h9M8 4l3.5 3.5L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="contact.html" class="btn btn-secondary">Talk to Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="services-faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header section-header-center">
+          <p class="section-label">Common Questions</p>
+          <h2 id="faq-heading">Frequently asked questions</h2>
+          <p>Can't find your answer? <a href="contact.html" style="color:var(--color-navy);font-weight:600;text-decoration:underline;text-underline-offset:3px;">Contact our team</a> — we're always happy to help.</p>
+        </div>
+
+        <div class="faq-list" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-btn" aria-expanded="false" aria-controls="faq-1">
+              How quickly can you pick up my parcel?
+              <div class="faq-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </button>
+            <div class="faq-body" id="faq-1" role="region">
+              <p>For express same-day orders placed before noon, we aim to collect within 2 hours in Lagos, Abuja, and Port Harcourt. For standard deliveries, we offer same-day or next-day collection windows. You'll receive a confirmation with your rider's details and an ETA once your booking is confirmed.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-btn" aria-expanded="false" aria-controls="faq-2">
+              What happens if my parcel is lost or damaged?
+              <div class="faq-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </button>
+            <div class="faq-body" id="faq-2" role="region">
+              <p>Every Nebur delivery is covered by our parcel protection policy. If your parcel is lost or damaged in transit through our fault, we will compensate you based on the declared value of the item. Simply contact our support team within 48 hours of the expected delivery date with your tracking number and we'll resolve it — no long forms, no unnecessary delays.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-btn" aria-expanded="false" aria-controls="faq-3">
+              Do you deliver on weekends and public holidays?
+              <div class="faq-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </button>
+            <div class="faq-body" id="faq-3" role="region">
+              <p>Yes. We operate 7 days a week, including Saturdays and Sundays. On public holidays, express same-day service may not be available in all locations — we'll notify you at the time of booking if there are any restrictions. Standard deliveries continue as normal throughout the week.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-btn" aria-expanded="false" aria-controls="faq-4">
+              How does Cash-on-Delivery settlement work?
+              <div class="faq-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </button>
+            <div class="faq-body" id="faq-4" role="region">
+              <p>When your buyer pays our rider at the door, that payment is logged against your account immediately. We batch all successful COD collections and initiate bank transfers to registered sellers every morning by 9am for deliveries completed the previous day. You'll receive an SMS and email confirmation for every settlement. Our COD fee is a small percentage of the collected amount — no hidden charges.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-btn" aria-expanded="false" aria-controls="faq-5">
+              Can I integrate Nebur directly with my online store?
+              <div class="faq-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </button>
+            <div class="faq-body" id="faq-5" role="region">
+              <p>Our e-commerce fulfilment service currently supports manual order import via CSV and direct communication with our fulfilment team. A full API and Shopify/WooCommerce plugin is under active development and will be available to all e-commerce fulfilment clients in 2026. Get in touch early to be first in the beta programme.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-btn" aria-expanded="false" aria-controls="faq-6">
+              What items can't be shipped with Nebur?
+              <div class="faq-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </button>
+            <div class="faq-body" id="faq-6" role="region">
+              <p>We cannot ship prohibited items including weapons, illegal substances, flammable liquids, live animals, perishable foods (unless using our cold-chain service), and items exceeding 50kg without prior arrangement. Fragile items like electronics and glassware are accepted but must be declared and properly packaged. Contact us if you're unsure — we'll always tell you upfront.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" aria-label="Nebur Logistics — Home">
+            <div class="nav-logo-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6l7-4 7 4v8l-7 4-7-4V6z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 2v16M3 6l7 4 7-4" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            Nebur
+          </a>
+          <p>Fast. Reliable. Delivered.<br>Nigeria's modern parcel logistics company.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link" aria-label="Nebur on Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg></a>
+            <a href="#" class="social-link" aria-label="Nebur on X (Twitter)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></a>
+            <a href="https://wa.me/234xxxxxxxxxx" class="social-link" aria-label="Nebur on WhatsApp"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4C8.6 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2z" stroke="white" stroke-width="1.5"/></svg></a>
+            <a href="#" class="social-link" aria-label="Nebur on LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4" stroke="white" stroke-width="1.5"/><path d="M7 10v7M7 7v.01" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M11 17v-4c0-1.7 1.3-3 3-3s3 1.3 3 3v4M11 10v7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" data-future="tracking">Track Parcel</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul role="list">
+            <li><a href="mailto:hello@neburlogistics.ng">hello@neburlogistics.ng</a></li>
+            <li><a href="tel:+234xxxxxxxxxx">+234 xxx xxx xxxx</a></li>
+            <li><span>Lagos, Nigeria</span></li>
+            <li><span>Abuja Hub, FCT</span></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get The App</h4>
+          <div class="footer-app">
+            <a href="#" class="app-badge" aria-label="App Store — Coming Soon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.5 2.5c0 1.5-1 2.7-2.5 2.7S9.5 4 9.5 2.5 10.5 0 12 0s2.5 1 2.5 2.5z" fill="rgba(255,255,255,0.5)"/><path d="M21 17.5c-.5 1-1 2-1.5 2.5s-1 1-2 1-1.5-.5-3-.5-2 .5-3 .5-1.5-.5-2-1-1-1.5-1.5-2.5C7 15.5 6 13 6 10.5 6 7 8 5 10 5c1 0 2 .5 2.5.5S14 5 15.5 5c2 0 4 2 4 5.5 0 2.5-1 5-2.5 7z" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg><div><span class="app-badge-label">Download on the</span><span class="app-badge-store">App Store</span></div><span class="app-badge-soon">Soon</span></a>
+            <a href="#" class="app-badge" aria-label="Google Play — Coming Soon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 2.5L15.5 12 3 21.5V2.5zM3 2.5l18.5 9.5-7 3.8M3 21.5l11-6.2 7.5 3.7" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linejoin="round"/></svg><div><span class="app-badge-label">Get it on</span><span class="app-badge-store">Google Play</span></div><span class="app-badge-soon">Soon</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Nebur Logistics. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta-bar" role="complementary" aria-label="Quick action">
+    <a href="contact.html">Get a Free Quote <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+
+  <script defer>
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileNav  = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!expanded));
+      mobileNav.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!header.contains(e.target) && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Fade-up
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    // City tabs for drop-off points
+    document.querySelectorAll('.city-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('aria-controls');
+        document.querySelectorAll('.city-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        document.querySelectorAll('.dropoff-city-group').forEach(g => g.classList.remove('active'));
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item   = btn.closest('.faq-item');
+        const body   = item.querySelector('.faq-body');
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+          i.querySelector('.faq-body').classList.remove('open');
+        });
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          body.classList.add('open');
+        }
+      });
+    });
+  </script>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/234xxxxxxxxxx" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Nebur on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+      <path d="M13 2C7 2 2 7 2 13c0 2 .6 3.9 1.6 5.5L2 24l5.7-1.5C9.2 23.5 11 24 13 24c6 0 11-5 11-11S19 2 13 2z" fill="white"/>
+      <path d="M9.5 8c-.3 0-.8.1-1.2.6-.4.5-1.5 1.5-1.5 3.6s1.5 4.2 1.7 4.5c.2.3 3 4.5 7.1 6.3 1 .4 1.7.6 2.3.8.9.3 1.8.2 2.4-.1.7-.4 2.2-1 2.5-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5s-2.2-1.1-2.5-1.2c-.3-.1-.6-.2-.8.2s-.9 1.2-1.1 1.4c-.2.2-.4.3-.8.1s-1.5-.5-2.9-1.8c-1.1-1-1.8-2.2-2-2.6-.2-.4 0-.6.2-.8l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4-.1-.6s-.8-1.9-1.1-2.6c-.3-.7-.6-.6-.8-.6z" fill="#25D366"/>
+    </svg>
+    <span class="whatsapp-float-label">Chat on WhatsApp</span>
+  </a>
+
+</body>
+</html>
