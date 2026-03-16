@@ -23,7 +23,7 @@
 
 ## Mission
 
-Build a clean, fast, professional multi-page marketing website for Nebur — a Nigerian logistics company offering parcel delivery, last-mile solutions, and e-commerce fulfilment services. Every page must convey **trust, speed, and reliability** while loading quickly on lower-end Android devices and variable mobile network speeds common across Nigeria.
+Build a clean, fast, professional multi-page marketing website for Nebur — a Nigerian logistics company offering parcel delivery and last-mile solutions. Nebur offers two collection methods: **home collection** (a rider comes to the customer's door) and **drop-off points** (the customer takes their parcel to a nearby Nebur partner location). Every page must convey **trust, speed, and reliability** while loading quickly on lower-end Android devices and variable mobile network speeds common across Nigeria.
 
 ---
 
@@ -37,10 +37,10 @@ The primary marketing and conversion page. Full-featured, highest visual impact.
 **Sections (in order):**
 1. `<header>` — Sticky nav with mobile hamburger menu
 2. `#hero` — Full-viewport hero: bold headline, sub-headline, dual CTAs
-3. `#stats` — Animated trust counters (parcels delivered, states covered, on-time rate)
+3. `#stats` — Animated trust counters (parcels delivered, states covered, drop-off points, on-time rate)
 4. `#services-preview` — 4 service cards, each linking to `services.html`
-5. `#how-it-works` — 3-step numbered process (horizontal desktop / vertical mobile)
-6. `#coverage` — Static SVG map of Nigeria with coverage zone highlights
+5. `#how-it-works` — Two parallel 3-step processes side by side: "Home Collection" and "Drop-off Point" — customer chooses their preferred method
+6. `#coverage` — Static SVG map of Nigeria with coverage zone highlights AND drop-off point cluster markers
 7. `#why-nebur` — 6 differentiator blocks with icons
 8. `#testimonials` — 3 customer testimonial cards
 9. `#cta-banner` — Full-width conversion banner
@@ -55,15 +55,16 @@ Dedicated page for all Nebur service offerings with full descriptions.
 1. `<header>` — Same sticky nav as all pages
 2. `#services-hero` — Page hero: "What We Deliver" headline + short intro paragraph
 3. `#services-list` — Full service breakdown, one section per service:
-   - **Last-Mile Delivery** — Door-to-door parcel delivery across Nigerian states
-   - **Parcel Pickup & Drop-off** — Scheduled collections from home or business
+   - **Home Collection & Delivery** — A Nebur rider comes to your door to collect and delivers to the recipient's address
+   - **Drop-off Points** — Take your parcel to any Nebur partner location; we handle the rest. Find your nearest point in the app or on the map
    - **Express Delivery** — Same-day delivery within Lagos, Abuja, Port Harcourt
    - **Business Logistics (B2B)** — Bulk shipment solutions and B2B freight forwarding
    - **E-commerce Fulfilment** — Warehousing + dispatch for online sellers
    - **Cash-on-Delivery (COD)** — Payment collected at delivery, transferred to sender
-4. `#pricing-note` — "Get a custom quote" section with CTA to `contact.html`
-5. `#services-faq` — 5–6 common questions (accordion component, vanilla JS)
-6. `<footer>` — Same footer as all pages
+4. `#drop-off-map` — Interactive or static map showing all Nebur drop-off point locations with name, address, and opening hours — filterable by city
+5. `#pricing-note` — "Get a custom quote" section with CTA to `contact.html`
+6. `#services-faq` — 5–6 common questions (accordion component, vanilla JS) including drop-off FAQs
+7. `<footer>` — Same footer as all pages
 
 ---
 
@@ -411,9 +412,10 @@ git checkout develop
 
 1. **Speed** — "Same-day and next-day delivery across Nigeria"
 2. **Reliability** — "Track every parcel, every step of the way"
-3. **Accessibility** — "For individuals, online sellers, and businesses of all sizes"
-4. **Trust** — "Thousands of parcels delivered safely"
-5. **Technology** — "Smart logistics built for Nigeria"
+3. **Flexibility** — "Drop it off near you, or let us come to you"
+4. **Accessibility** — "For individuals, online sellers, and businesses of all sizes"
+5. **Trust** — "Thousands of parcels delivered safely"
+6. **Technology** — "Smart logistics built for Nigeria"
 
 ### Consistent CTAs Across All Pages
 
@@ -432,10 +434,12 @@ This website is Phase 1 of a larger platform. Build with the following in mind f
 
 - **Nav "Businesses" link** — placeholder now (`href="#"`, `data-future="b2b-portal"`) for the future B2B client portal
 - **Track Parcel button** — `href="#"` with `data-future="tracking"` — will link to live tracking application
+- **Find Drop-off Point button** — `href="#"` with `data-future="drop-off-finder"` — will link to live drop-off point locator in the app
 - **Footer app badges** — include styled placeholder slots for App Store and Google Play badges with a "Coming Soon" label
 - **CSS custom properties** — all design tokens declared as `--variables` so the design system can be adopted by a future React/Next.js app without rework
 - **Semantic section IDs** — use clean IDs (`#hero`, `#services`, `#contact-form`) that translate naturally to React routes
 - **Form field naming** — all contact form fields in snake_case for clean future backend API mapping
+- **Drop-off map section** — use a static styled list or embedded static map for MVP; designed to be swapped for a live Location Service API map later
 
 ---
 
@@ -473,7 +477,7 @@ This website is Phase 1 of a larger platform. Build with the following in mind f
 | 2025-03-06 | Revised to multi-page architecture | Product decision: 4 pages (index, services, about, contact) |
 | 2025-03-06 | Updated stack: Inter font, embedded CSS/JS, Netlify hosting | Owner specifications applied |
 | 2025-03-06 | Added Git Flow strategy and Conventional Commits convention | Proper version control from day one |
-| 2026-03-09 | Extracted shared CSS into `assets/styles.css` | Eliminate ~400 lines of duplicated CSS across all 4 pages; standardise `.social-link` class in contact.html footer |
+| 2026-03-13 | Added drop-off points as a core collection method throughout | Product decision: customers can drop parcels at partner locations as an alternative to home collection |
 
 ---
 

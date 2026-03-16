@@ -162,7 +162,7 @@
     }
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
       text-align: center;
     }
@@ -245,43 +245,96 @@
       background-image: radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
       background-size: 24px 24px;
     }
-    .steps-grid {
+    .hiw-processes {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 2rem;
+    }
+    .hiw-process {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .hiw-process-header {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .hiw-process-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--color-navy);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .hiw-process h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      margin: 0;
+    }
+    .hiw-process-desc {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
       position: relative;
     }
-    .steps-grid::before {
+    .steps-list::before {
       content: '';
       position: absolute;
+      left: 27px;
       top: 36px;
-      left: calc(16.66% + 1.5rem);
-      right: calc(16.66% + 1.5rem);
-      height: 2px;
+      bottom: 36px;
+      width: 2px;
       background: repeating-linear-gradient(
-        90deg,
-        var(--color-amber) 0, var(--color-amber) 8px,
-        transparent 8px, transparent 18px
+        180deg,
+        var(--color-amber) 0, var(--color-amber) 6px,
+        transparent 6px, transparent 14px
       );
     }
-    .step-card { text-align: center; padding: 2rem 1.5rem; }
-    .step-number {
-      width: 72px;
-      height: 72px;
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .step-num {
+      width: 54px;
+      height: 54px;
       background: var(--color-navy);
       color: var(--color-amber);
       border-radius: 50%;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1.5rem;
+      flex-shrink: 0;
       position: relative;
       z-index: 1;
     }
-    .step-card h3 { margin-bottom: 0.625rem; }
-    .step-card p { color: var(--color-text-muted); font-size: 0.9375rem; }
+    .step-item-text { padding-top: 0.75rem; }
+    .step-item-text h4 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 0.25rem;
+    }
+    .step-item-text p {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.55;
+    }
 
     /* =============================================
        COVERAGE
@@ -469,12 +522,14 @@
       .coverage-inner { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
-      .steps-grid { grid-template-columns: 1fr; }
-      .steps-grid::before { display: none; }
+      .hiw-processes { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr; }
-      .stat-divider { width: 100%; height: 1px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-divider { display: none; }
       .float-el { display: none; }
+    }
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .services-grid { grid-template-columns: 1fr; }
@@ -661,6 +716,11 @@
             <div class="stat-number" data-target="98" data-suffix="%" aria-label="98 percent on-time delivery rate">0</div>
             <div class="stat-label">On-Time Delivery Rate</div>
           </div>
+          <div class="stat-divider" role="separator" aria-hidden="true"></div>
+          <div class="stat-item fade-up fade-up-delay-3">
+            <div class="stat-number" data-target="200" data-suffix="+" aria-label="200 plus drop-off points">0</div>
+            <div class="stat-label">Drop-off Points</div>
+          </div>
         </div>
       </div>
     </section>
@@ -756,27 +816,87 @@
     <section id="how-it-works" aria-labelledby="hiw-heading">
       <div class="container">
         <div class="section-header section-header-center">
-          <p class="section-label">Simple Process</p>
-          <h2 id="hiw-heading">Ship in three easy steps</h2>
-          <p>Getting your parcel moving takes less than five minutes. No complicated forms, no confusion.</p>
+          <p class="section-label">Two Ways to Ship</p>
+          <h2 id="hiw-heading">Choose how it works for you</h2>
+          <p>Book a home collection or drop off at a nearby point — whichever fits your day. Both get your parcel moving fast.</p>
         </div>
 
-        <div class="steps-grid">
-          <div class="step-card fade-up">
-            <div class="step-number" aria-label="Step 1">1</div>
-            <h3>Book Your Pickup</h3>
-            <p>Fill out a quick quote form with your pickup and delivery details. We'll confirm within the hour.</p>
+        <div class="hiw-processes">
+
+          <!-- Home Collection -->
+          <div class="hiw-process fade-up">
+            <div class="hiw-process-header">
+              <div class="hiw-process-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M3 9l8-5 8 5v9l-8 5-8-5V9z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M11 4v12M3 9l8 5 8-5" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3>Home Collection</h3>
+            </div>
+            <p class="hiw-process-desc">We come to you. Book online or on WhatsApp and a Nebur rider will collect your parcel right from your door — no travel required.</p>
+            <div class="steps-list" aria-label="Home Collection steps">
+              <div class="step-item">
+                <div class="step-num" aria-label="Step 1">1</div>
+                <div class="step-item-text">
+                  <h4>Book online or via WhatsApp</h4>
+                  <p>Share your pickup and delivery details in under two minutes. We confirm within the hour.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num" aria-label="Step 2">2</div>
+                <div class="step-item-text">
+                  <h4>Rider collects from your door</h4>
+                  <p>Our rider arrives at the agreed time. You hand over the parcel — that's all you need to do.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num" aria-label="Step 3">3</div>
+                <div class="step-item-text">
+                  <h4>Delivered to the recipient</h4>
+                  <p>Your parcel is delivered safely. Both you and your recipient receive confirmation.</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="step-card fade-up fade-up-delay-2">
-            <div class="step-number" aria-label="Step 2">2</div>
-            <h3>We Collect It</h3>
-            <p>Our rider comes to your door at the agreed time. No need to visit any drop-off point.</p>
+
+          <!-- Drop-off Point -->
+          <div class="hiw-process fade-up fade-up-delay-2">
+            <div class="hiw-process-header">
+              <div class="hiw-process-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M11 2C7.1 2 4 5.1 4 9c0 5.5 7 11 7 11S18 14.5 18 9c0-3.9-3.1-7-7-7z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+                  <circle cx="11" cy="9" r="2.5" stroke="#F59E0B" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3>Drop-off Point</h3>
+            </div>
+            <p class="hiw-process-desc">Prefer to drop it off yourself? Take your parcel to any of our 200+ partner locations across Nigeria and we'll handle everything from there.</p>
+            <div class="steps-list" aria-label="Drop-off Point steps">
+              <div class="step-item">
+                <div class="step-num" aria-label="Step 1">1</div>
+                <div class="step-item-text">
+                  <h4>Find your nearest drop-off point</h4>
+                  <p>Search by city or use our app (coming soon) to locate the closest Nebur partner location.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num" aria-label="Step 2">2</div>
+                <div class="step-item-text">
+                  <h4>Drop your parcel off</h4>
+                  <p>Hand over your parcel at the partner location. Staff are on hand to label and receipt it.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num" aria-label="Step 3">3</div>
+                <div class="step-item-text">
+                  <h4>We deliver to the recipient</h4>
+                  <p>We collect from the drop-off point and deliver to your recipient's address with full tracking.</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="step-card fade-up fade-up-delay-4">
-            <div class="step-number" aria-label="Step 3">3</div>
-            <h3>Delivered &amp; Done</h3>
-            <p>Your parcel arrives safely. You get a confirmation and your recipient gets their delivery.</p>
-          </div>
+
         </div>
       </div>
     </section>
@@ -809,12 +929,16 @@
 
             <div class="coverage-legend">
               <div class="legend-item">
-                <div class="legend-dot" style="background:var(--color-amber);"></div>
-                Express same-day
+                <div class="legend-dot" style="background:var(--color-amber);border-radius:50%;border:2px solid var(--color-amber);width:14px;height:14px;"></div>
+                Express same-day hub
               </div>
               <div class="legend-item">
                 <div class="legend-dot" style="background:var(--color-navy);opacity:0.5;"></div>
                 Standard delivery
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background:var(--color-amber);border-radius:50%;border:2px solid white;outline:1px solid var(--color-amber);width:12px;height:12px;"></div>
+                Drop-off Points
               </div>
             </div>
 
@@ -856,6 +980,25 @@
               <text x="224" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#D97706" font-family="Inter,sans-serif">Abuja</text>
               <text x="172" y="292" text-anchor="middle" font-size="10" font-weight="700" fill="#D97706" font-family="Inter,sans-serif">P.H.</text>
               <text x="234" y="70" text-anchor="middle" font-size="10" fill="#6B7280" font-family="Inter,sans-serif">Kano</text>
+              <text x="124" y="256" text-anchor="middle" font-size="10" fill="#6B7280" font-family="Inter,sans-serif">Ibadan</text>
+
+              <!-- Drop-off point cluster markers (amber filled, small) -->
+              <!-- Lagos cluster -->
+              <circle cx="93" cy="271" r="6" fill="#F59E0B" stroke="white" stroke-width="1.5"/>
+              <circle cx="109" cy="283" r="6" fill="#F59E0B" stroke="white" stroke-width="1.5"/>
+              <circle cx="96" cy="289" r="6" fill="#F59E0B" stroke="white" stroke-width="1.5"/>
+              <!-- Abuja cluster -->
+              <circle cx="208" cy="163" r="6" fill="#F59E0B" stroke="white" stroke-width="1.5"/>
+              <circle cx="225" cy="178" r="6" fill="#F59E0B" stroke="white" stroke-width="1.5"/>
+              <!-- Port Harcourt cluster -->
+              <circle cx="163" cy="262" r="6" fill="#F59E0B" stroke="white" stroke-width="1.5"/>
+              <circle cx="179" cy="274" r="6" fill="#F59E0B" stroke="white" stroke-width="1.5"/>
+              <!-- Kano cluster -->
+              <circle cx="220" cy="75" r="6" fill="#F59E0B" stroke="white" stroke-width="1.5"/>
+              <circle cx="232" cy="83" r="6" fill="#F59E0B" stroke="white" stroke-width="1.5"/>
+              <!-- Ibadan cluster -->
+              <circle cx="118" cy="248" r="6" fill="#F59E0B" stroke="white" stroke-width="1.5"/>
+              <circle cx="130" cy="256" r="6" fill="#F59E0B" stroke="white" stroke-width="1.5"/>
             </svg>
           </div>
 

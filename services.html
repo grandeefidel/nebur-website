@@ -66,6 +66,51 @@
     }
     .tag.highlight { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.35); color: var(--color-navy); }
 
+    /* ── Drop-off Map ── */
+    #drop-off-map {
+      padding: var(--section-pad);
+      background: var(--color-off-white);
+    }
+    .drop-off-map-inner { max-width: 960px; margin: 0 auto; }
+    #drop-off-map .section-header { margin-bottom: clamp(2rem, 4vw, 3rem); }
+    #drop-off-map .section-header p { max-width: 55ch; }
+    .drop-off-locations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .drop-off-location-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 1.375rem 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .drop-off-location-card:hover {
+      border-color: var(--color-amber);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    }
+    .drop-off-location-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      margin-bottom: 0.25rem;
+    }
+    .drop-off-location-area {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .drop-off-location-hours {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+    }
+    .drop-off-map-cta { text-align: center; }
+
     /* ── Drop-off Points ── */
     #drop-off-points {
       padding: var(--section-pad);
@@ -241,6 +286,7 @@
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .dropoff-grid { grid-template-columns: repeat(2, 1fr); }
+      .drop-off-locations-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
       .service-row { grid-template-columns: 1fr; gap: 1.25rem; }
@@ -251,6 +297,7 @@
     }
     @media (max-width: 640px) {
       .dropoff-grid { grid-template-columns: 1fr; }
+      .drop-off-locations-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -317,7 +364,7 @@
       <div class="container">
         <h2 id="services-list-heading" class="visually-hidden">All Nebur Services</h2>
 
-        <!-- Last-Mile Delivery -->
+        <!-- Home Collection & Delivery -->
         <div class="service-row fade-up">
           <div class="service-row-icon" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -326,8 +373,8 @@
             </svg>
           </div>
           <div class="service-row-body">
-            <h3>Last-Mile Delivery</h3>
-            <p>Our flagship service. We collect parcels from your door and deliver them to any address across all 36 Nigerian states and the FCT. Whether it's a gift going to Kano, a product ordered from Aba, or a document needed urgently in Ibadan — Nebur's network of riders and regional partners makes it happen. Standard delivery windows range from next-day to 3 days depending on destination.</p>
+            <h3>Home Collection &amp; Delivery</h3>
+            <p>A Nebur rider comes directly to your door to collect your parcel and delivers it to the recipient's address — no travel required on your part. Our flagship door-to-door service covers all 36 Nigerian states and the FCT. Whether it's a gift going to Kano, a product from Aba, or a document needed urgently in Ibadan — we get it there. Standard delivery windows range from next-day to 3 days depending on destination.</p>
             <div class="service-tags">
               <span class="tag highlight">All 36 States + FCT</span>
               <span class="tag">Next-day available</span>
@@ -337,24 +384,22 @@
           </div>
         </div>
 
-        <!-- Parcel Pickup & Drop-off -->
+        <!-- Drop-off Points -->
         <div class="service-row fade-up">
           <div class="service-row-icon" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <rect x="4" y="10" width="24" height="18" rx="3" stroke="#F59E0B" stroke-width="1.5"/>
-              <path d="M4 16h24" stroke="#F59E0B" stroke-width="1.5"/>
-              <path d="M11 6l3 4M21 6l-3 4" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M10 22h5M20 22h2" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M16 3C10.5 3 6 7.5 6 13c0 8 10 16 10 16S26 21 26 13c0-5.5-4.5-10-10-10z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/>
+              <circle cx="16" cy="13" r="3.5" stroke="#F59E0B" stroke-width="1.5"/>
             </svg>
           </div>
           <div class="service-row-body">
-            <h3>Parcel Pickup &amp; Drop-off</h3>
-            <p>Prefer to drop off your parcel rather than wait for a collection? Use one of our growing network of drop-off points across Lagos, Abuja, and Port Harcourt. You can also schedule a specific collection window — morning, afternoon, or evening — so pickups fit around your day, not the other way around.</p>
+            <h3>Drop-off Points</h3>
+            <p>Take your parcel to any Nebur partner drop-off location near you. We handle collection, transit, and delivery from there. Quick, flexible, and available across hundreds of locations in Lagos, Abuja, Port Harcourt, and more. No need to wait in for a rider — drop it off at a time that suits you and we take care of the rest.</p>
             <div class="service-tags">
-              <span class="tag highlight">Flexible scheduling</span>
-              <span class="tag">Drop-off points available</span>
-              <span class="tag">Lagos · Abuja · PH</span>
-              <span class="tag">Home or business</span>
+              <span class="tag highlight">200+ locations</span>
+              <span class="tag highlight">Lagos · Abuja · PH · Ibadan · Kano</span>
+              <span class="tag">No waiting for a rider</span>
+              <span class="tag">Tracking from drop-off</span>
             </div>
           </div>
         </div>
@@ -452,6 +497,84 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- DROP-OFF MAP -->
+    <section id="drop-off-map" aria-labelledby="drop-off-map-heading">
+      <div class="container">
+        <div class="drop-off-map-inner">
+          <div class="section-header">
+            <p class="section-label">Partner Locations</p>
+            <h2 id="drop-off-map-heading">Find a Drop-off Point Near You</h2>
+            <p>With over 200 partner locations across Nigeria, there's always a Nebur drop-off point close by. Visit our app or check the list below to find your nearest one.</p>
+          </div>
+
+          <div class="drop-off-locations-grid">
+
+            <div class="drop-off-location-card fade-up">
+              <div class="drop-off-location-name">Shoprite Ikeja</div>
+              <div class="drop-off-location-area">Ikeja, Lagos</div>
+              <div class="drop-off-location-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat: 9am–8pm
+              </div>
+            </div>
+
+            <div class="drop-off-location-card fade-up fade-up-delay-1">
+              <div class="drop-off-location-name">GTBank Victoria Island</div>
+              <div class="drop-off-location-area">Victoria Island, Lagos</div>
+              <div class="drop-off-location-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Fri: 8am–5pm
+              </div>
+            </div>
+
+            <div class="drop-off-location-card fade-up fade-up-delay-2">
+              <div class="drop-off-location-name">Wuse Market Hub</div>
+              <div class="drop-off-location-area">Wuse, Abuja</div>
+              <div class="drop-off-location-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat: 8am–7pm
+              </div>
+            </div>
+
+            <div class="drop-off-location-card fade-up fade-up-delay-1">
+              <div class="drop-off-location-name">Area 11 Collection Point</div>
+              <div class="drop-off-location-area">Area 11, Abuja</div>
+              <div class="drop-off-location-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Fri: 9am–6pm
+              </div>
+            </div>
+
+            <div class="drop-off-location-card fade-up fade-up-delay-2">
+              <div class="drop-off-location-name">GRA Drop-off</div>
+              <div class="drop-off-location-area">GRA, Port Harcourt</div>
+              <div class="drop-off-location-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat: 9am–7pm
+              </div>
+            </div>
+
+            <div class="drop-off-location-card fade-up fade-up-delay-3">
+              <div class="drop-off-location-name">Bodija Market Point</div>
+              <div class="drop-off-location-area">Bodija, Ibadan</div>
+              <div class="drop-off-location-hours">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#6B7280" stroke-width="1.1"/><path d="M6.5 4v2.5l2 1" stroke="#6B7280" stroke-width="1.1" stroke-linecap="round"/></svg>
+                Mon–Sat: 8am–6pm
+              </div>
+            </div>
+
+          </div>
+
+          <div class="drop-off-map-cta fade-up">
+            <a href="#" data-future="drop-off-finder" class="btn btn-primary">
+              Find More Locations
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M3 7.5h9M8 4l3.5 3.5L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -882,6 +1005,30 @@
             </button>
             <div class="faq-body" id="faq-6" role="region">
               <p>We cannot ship prohibited items including weapons, illegal substances, flammable liquids, live animals, perishable foods (unless using our cold-chain service), and items exceeding 50kg without prior arrangement. Fragile items like electronics and glassware are accepted but must be declared and properly packaged. Contact us if you're unsure — we'll always tell you upfront.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-btn" aria-expanded="false" aria-controls="faq-7">
+              How do I find my nearest drop-off point?
+              <div class="faq-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </button>
+            <div class="faq-body" id="faq-7" role="region">
+              <p>You can find your nearest Nebur drop-off point using our app (coming soon) or by browsing the location list on this page. We have over 200 partner locations across Lagos, Abuja, Port Harcourt, Ibadan, and Kano.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-btn" aria-expanded="false" aria-controls="faq-8">
+              What happens after I drop off my parcel?
+              <div class="faq-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </button>
+            <div class="faq-body" id="faq-8" role="region">
+              <p>Once you drop off your parcel at a Nebur partner location, our team collects it within the day and begins transit. You'll receive a confirmation message with a tracking reference so you can follow your parcel every step of the way.</p>
             </div>
           </div>
 
